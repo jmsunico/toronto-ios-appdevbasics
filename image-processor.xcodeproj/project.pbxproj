@@ -18,7 +18,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FA1908D41D257412001C2558 /* imageFilterInterface.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = imageFilterInterface.playground; sourceTree = "<group>"; };
 		FA1908D51D257617001C2558 /* imageFilters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imageFilters.swift; sourceTree = "<group>"; };
 		FA1908D61D257617001C2558 /* RGBAImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBAImage.swift; sourceTree = "<group>"; };
 		FA1908D71D257617001C2558 /* Workflow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workflow.swift; sourceTree = "<group>"; };
@@ -72,7 +71,6 @@
 				FA7FD3CD1D1D1C4C0073F30B /* Assets.xcassets */,
 				FA7FD3CF1D1D1C4C0073F30B /* LaunchScreen.storyboard */,
 				FA7FD3D21D1D1C4C0073F30B /* Info.plist */,
-				FA1908D41D257412001C2558 /* imageFilterInterface.playground */,
 			);
 			path = "image-processor";
 			sourceTree = "<group>";

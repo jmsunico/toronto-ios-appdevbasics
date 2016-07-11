@@ -1,6 +1,8 @@
 import UIKit
 
-public let functionsDictionary = [
+//Identity returns the exact image it is invoked with (mainly testing/coherency purposes)
+
+public var functionsDictionary = [
 	"Identity": identity,
 	"Red channel": redChannel,
 	"Green channel": greenChannel,
@@ -15,9 +17,6 @@ public let functionsDictionary = [
 	"Solarisation": solarisation
 ]
 
-
-
-//Identity returns the exact image it is invoked with (mainly testing/coherency purposes)
 public func identity (source: UIImage, degree: Int8) -> UIImage{
 	print("applying identity")
 	return(source)

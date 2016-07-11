@@ -6,7 +6,7 @@ import UIKit
 
 public class Workflow {
 	public var somethingWentWrong = false
-
+	
 	public var sequence : [(String, Int8)] = [] // = [("Identity", 1)]
 	public var result : UIImage?
 	

@@ -7,109 +7,93 @@
 //
 
 import UIKit
-var pickerDataSource : [[String]] = [[],[]]
-var lastFilter = "Identity"
-var lastParameter = "0"
 
-class ViewController: UIViewController,  UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class ViewController: UIViewController{
 	
-	let imagePicker = UIImagePickerController()
-	func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-		if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-			sourceImageContainer.contentMode = .ScaleAspectFit
-			sourceImageContainer.image = pickedImage
+	@IBOutlet weak var sourceImageView: UIImageView!
+	@IBOutlet var SecondMenu: UIView!
+	
+	@IBAction func filterButton(sender: UIButton) {
+		if (sender.selected){
+			hideSecondMenu()
+			sender.selected = false
+		} else{
+			showSecondMenu()
+			sender.selected = true
 		}
-		
-		dismissViewControllerAnimated(true, completion: nil)
-	}
-	func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-		dismissViewControllerAnimated(true, completion: nil)
 	}
 	
-	@IBOutlet weak var sourceImageContainer: UIImageView!
-	@IBAction func sourceImagePicker(sender: UIButton) {
-		imagePicker.allowsEditing = false
-		imagePicker.sourceType = .PhotoLibrary
-		presentViewController(imagePicker, animated: true, completion: nil)
-	}
-	
-	@IBOutlet weak var filterPicker: UIPickerView!
-	@IBOutlet weak var filteredImageContainer: UIImageView!
-	
-	@IBAction func userPressedReturn(sender: UITextField) {
-		self.applyFilter(commandLine.text!)
-	}
-	@IBOutlet weak var commandLine: UITextField!
-	@IBAction func textFieldEditingbegin(sender: UITextField) {
-		//
-	}
-	@IBAction func textFieldEditingend(sender: UITextField) {
-		applyFilter(commandLine.text!)
-	}
-	
-	func applyFilter(commands : String) -> UIImage{
-		let myPipeline : Workflow = Workflow(withSequence: workflowInterface(commands))!
-		
-		if myPipeline.somethingWentWrong{
-		print("...but there were some problems: check spelling...")
-		myPipeline.sequence
-			print(myPipeline.sequence)}
-			myPipeline.apply(image)
-			myPipeline.result
+	func showSecondMenu(){
+		view.addSubview(SecondMenu)
+		let bottomConstraint = SecondMenu.bottomAnchor.constraintEqualToAnchor(firstMenu.topAnchor)
+		let leftConstraint = SecondMenu.leftAnchor.constraintEqualToAnchor(view.leftAnchor)
+		let rightConstraint = SecondMenu.rightAnchor.constraintEqualToAnchor(view.rightAnchor)
+		let heightConstraint = SecondMenu.heightAnchor.constraintEqualToConstant(44)
+		NSLayoutConstraint.activateConstraints([bottomConstraint, leftConstraint, rightConstraint, heightConstraint])
+		view.layoutIfNeeded()
+		UIView.animateWithDuration(0.5){
+			self.SecondMenu.alpha = 1
 		}
-		filteredImageContainer.image = myPipeline.resul
+	
 	}
+	
+	
+	func hideSecondMenu(){
+		UIView.animateWithDuration(0.5, animations: {
+			self.SecondMenu.alpha = 0
+
+			
+		}) {_ in
+			self.SecondMenu.removeFromSuperview()
+		
+		}
+	}
+	
+	
+	
+	@IBOutlet weak var firstMenu: UIStackView!
+	
+	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
+		self.sourceImageView.image = UIImage(named: "scenery")
 		
-		//Initialise pickerDataSource
-
-		for (key, _) in functionsDictionary{
-			pickerDataSource[0].append(key)
-		}
-		for parameter in -128...127{
-			pickerDataSource[1].append(String(parameter))
-		}
-		imagePicker.allowsEditing = false
-		imagePicker.delegate = self
-		imagePicker.sourceType = .PhotoLibrary
-		presentViewController(imagePicker, animated: true, completion: nil)
-		self.filterPicker.dataSource = self
-		self.filterPicker.delegate = self
-		filterPicker.selectRow(5, inComponent: 0, animated: true)
-		filterPicker.selectRow(128, inComponent: 1, animated: true)
+		SecondMenu.translatesAutoresizingMaskIntoConstraints = false
+		SecondMenu.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.25)
+		
+		
+		
+	
+		
 	}
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
-	
-	//This method indicates that the number of components of the view selector is just one, the name of the song
-	func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-		return 2
-	}
-	
-	//This method indicates that the number of items in the component equals the number of elements in the  array
-	func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-		return pickerDataSource[component].count
-	}
-	
-	func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-		return pickerDataSource[component][row]
-	}
 
-	func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
-		print(pickerDataSource[component][row])
-	}
-	
-	// Preparation for storyboard-based applications
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-		// Get the new view controller using segue.destinationViewController.
-		// Pass the selected object to the new view controller.
-	}
+
 }
 
 
+
+/*		let image = UIImage(named: "sample")
+let complextring = "   ,something,   greyscale 2 3  ,   Bright +50,   Greyscale,Scale 2,    , Contrast,,,  ,"
+workflowInterface(complextring)
+let myPipeline = Workflow(withSequence: workflowInterface(complextring))
+
+if myPipeline != nil {
+print("Could create turn_greyscale pipeline")
+if myPipeline!.somethingWentWrong{
+print("...but there were some problems: check spelling...")
+}
+myPipeline!.apply(image)
+} else{
+print("Could not create pipeline")
+}
+let result = myPipeline!.result
+
+*/
+	
