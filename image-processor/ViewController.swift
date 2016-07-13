@@ -8,7 +8,61 @@
 
 import UIKit
 
-class ViewController: UIViewController{
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+	
+	func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+		dismissViewControllerAnimated(true, completion: nil)
+		if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
+			sourceImageView.image = image
+		}
+	}
+	
+	func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+		dismissViewControllerAnimated(true, completion: nil)
+	}
+	@IBAction func onShare(sender: AnyObject) {
+		let activityController = UIActivityViewController(activityItems: [sourceImageView.image!], applicationActivities: nil)
+		presentViewController(activityController, animated: true, completion: nil)
+		
+		
+	}
+	
+	@IBAction func onNewPhoto(sender: AnyObject) {
+		let actionSheet = UIAlertController(title: "New Photo", message: nil, preferredStyle: .ActionSheet)
+		actionSheet.addAction((UIAlertAction(title: "Camera", style: .Default, handler: { action in
+			self.showCamera()
+			})))
+	
+		
+		actionSheet.addAction((UIAlertAction(title: "Album", style: .Default, handler: { action in
+			self.showAlbum()
+		})))
+		
+		actionSheet.addAction((UIAlertAction(title: "Cancel", style: .Default, handler: { action in
+			//
+		})))
+			self.presentViewController(actionSheet, animated: true, completion: nil)
+		
+
+	}
+	
+	func showCamera(){
+		let cameraPicker = UIImagePickerController()
+		cameraPicker.delegate = self
+		cameraPicker.sourceType = .Camera
+		
+		presentViewController(cameraPicker, animated: true, completion: nil)
+	}
+	
+	func showAlbum(){
+		let cameraPicker = UIImagePickerController()
+		cameraPicker.delegate = self
+		cameraPicker.sourceType = .PhotoLibrary
+		
+		presentViewController(cameraPicker, animated: true, completion: nil)
+	}
+	
+	
 	
 	@IBOutlet weak var sourceImageView: UIImageView!
 	@IBOutlet var SecondMenu: UIView!

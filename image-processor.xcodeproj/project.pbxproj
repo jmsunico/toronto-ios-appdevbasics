@@ -10,6 +10,8 @@
 		FA1908D81D257617001C2558 /* imageFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1908D51D257617001C2558 /* imageFilters.swift */; };
 		FA1908D91D257617001C2558 /* RGBAImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1908D61D257617001C2558 /* RGBAImage.swift */; };
 		FA1908DA1D257617001C2558 /* Workflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1908D71D257617001C2558 /* Workflow.swift */; };
+		FA1DF2291D35693900C8EDAD /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1DF2281D35693900C8EDAD /* TableViewController.swift */; };
+		FA37E81E1D36BE3200C35534 /* AssignmentInstructions.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FA37E81D1D36BE3200C35534 /* AssignmentInstructions.rtf */; };
 		FA7FD3C71D1D1C4C0073F30B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7FD3C61D1D1C4C0073F30B /* AppDelegate.swift */; };
 		FA7FD3C91D1D1C4C0073F30B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7FD3C81D1D1C4C0073F30B /* ViewController.swift */; };
 		FA7FD3CC1D1D1C4C0073F30B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA7FD3CA1D1D1C4C0073F30B /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 		FA1908D51D257617001C2558 /* imageFilters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imageFilters.swift; sourceTree = "<group>"; };
 		FA1908D61D257617001C2558 /* RGBAImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBAImage.swift; sourceTree = "<group>"; };
 		FA1908D71D257617001C2558 /* Workflow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workflow.swift; sourceTree = "<group>"; };
+		FA1DF2281D35693900C8EDAD /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		FA37E81D1D36BE3200C35534 /* AssignmentInstructions.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = AssignmentInstructions.rtf; sourceTree = "<group>"; };
 		FA7FD3C31D1D1C4C0073F30B /* image-processor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "image-processor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA7FD3C61D1D1C4C0073F30B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA7FD3C81D1D1C4C0073F30B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +49,7 @@
 		FA7FD3BA1D1D1C4C0073F30B = {
 			isa = PBXGroup;
 			children = (
+				FA37E81D1D36BE3200C35534 /* AssignmentInstructions.rtf */,
 				FA7FD3DA1D1D1D6B0073F30B /* imageProcessor.playground */,
 				FA7FD3C51D1D1C4C0073F30B /* image-processor */,
 				FA7FD3C41D1D1C4C0073F30B /* Products */,
@@ -67,6 +72,7 @@
 				FA1908D71D257617001C2558 /* Workflow.swift */,
 				FA7FD3C61D1D1C4C0073F30B /* AppDelegate.swift */,
 				FA7FD3C81D1D1C4C0073F30B /* ViewController.swift */,
+				FA1DF2281D35693900C8EDAD /* TableViewController.swift */,
 				FA7FD3CA1D1D1C4C0073F30B /* Main.storyboard */,
 				FA7FD3CD1D1D1C4C0073F30B /* Assets.xcassets */,
 				FA7FD3CF1D1D1C4C0073F30B /* LaunchScreen.storyboard */,
@@ -135,6 +141,7 @@
 			files = (
 				FA7FD3D11D1D1C4C0073F30B /* LaunchScreen.storyboard in Resources */,
 				FA7FD3CE1D1D1C4C0073F30B /* Assets.xcassets in Resources */,
+				FA37E81E1D36BE3200C35534 /* AssignmentInstructions.rtf in Resources */,
 				FA7FD3CC1D1D1C4C0073F30B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA7FD3C91D1D1C4C0073F30B /* ViewController.swift in Sources */,
+				FA1DF2291D35693900C8EDAD /* TableViewController.swift in Sources */,
 				FA1908D91D257617001C2558 /* RGBAImage.swift in Sources */,
 				FA1908D81D257617001C2558 /* imageFilters.swift in Sources */,
 				FA7FD3C71D1D1C4C0073F30B /* AppDelegate.swift in Sources */,
