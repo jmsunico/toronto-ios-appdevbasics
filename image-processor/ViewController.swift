@@ -10,10 +10,19 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 	
+	@IBOutlet weak var firstMenu: UIStackView!
+	@IBOutlet var SecondMenu: UIView!
+	@IBOutlet weak var originalImageView: UIImageView!
+	@IBOutlet weak var filteredImageView: UIImageView!
+	@IBOutlet weak var compareButton: UIButton!
+
+	
 	func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
 		dismissViewControllerAnimated(true, completion: nil)
 		if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
-			sourceImageView.image = image
+			self.originalImageView.image = image
+			self.filteredImageView.image = nil
+			self.compareButton.enabled = false
 		}
 	}
 	
@@ -21,10 +30,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		dismissViewControllerAnimated(true, completion: nil)
 	}
 	@IBAction func onShare(sender: AnyObject) {
-		let activityController = UIActivityViewController(activityItems: [sourceImageView.image!], applicationActivities: nil)
+		let activityController = UIActivityViewController(activityItems: [originalImageView.image!], applicationActivities: nil)
 		presentViewController(activityController, animated: true, completion: nil)
-		
-		
 	}
 	
 	@IBAction func onNewPhoto(sender: AnyObject) {
@@ -32,25 +39,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		actionSheet.addAction((UIAlertAction(title: "Camera", style: .Default, handler: { action in
 			self.showCamera()
 			})))
-	
-		
 		actionSheet.addAction((UIAlertAction(title: "Album", style: .Default, handler: { action in
 			self.showAlbum()
 		})))
-		
 		actionSheet.addAction((UIAlertAction(title: "Cancel", style: .Default, handler: { action in
 			//
 		})))
 			self.presentViewController(actionSheet, animated: true, completion: nil)
-		
-
 	}
 	
 	func showCamera(){
 		let cameraPicker = UIImagePickerController()
 		cameraPicker.delegate = self
 		cameraPicker.sourceType = .Camera
-		
 		presentViewController(cameraPicker, animated: true, completion: nil)
 	}
 	
@@ -58,14 +59,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		let cameraPicker = UIImagePickerController()
 		cameraPicker.delegate = self
 		cameraPicker.sourceType = .PhotoLibrary
-		
 		presentViewController(cameraPicker, animated: true, completion: nil)
 	}
-	
-	
-	
-	@IBOutlet weak var sourceImageView: UIImageView!
-	@IBOutlet var SecondMenu: UIView!
 	
 	@IBAction func filterButton(sender: UIButton) {
 		if (sender.selected){
@@ -91,63 +86,63 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	
 	}
 	
-	
 	func hideSecondMenu(){
 		UIView.animateWithDuration(0.5, animations: {
 			self.SecondMenu.alpha = 0
-
-			
 		}) {_ in
 			self.SecondMenu.removeFromSuperview()
-		
 		}
 	}
-	
-	
-	
-	@IBOutlet weak var firstMenu: UIStackView!
-	
-	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
-		self.sourceImageView.image = UIImage(named: "scenery")
-		
+		self.originalImageView.image = UIImage(named: "landscape")
+		self.filteredImageView.hidden = true
+		self.originalImageView.hidden = false
+		self.compareButton.enabled = false
 		SecondMenu.translatesAutoresizingMaskIntoConstraints = false
 		SecondMenu.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.25)
-		
-		
-		
+	}
+
+	@IBAction func compareButtonDown(sender: UIButton) {
+		self.filteredImageView.hidden = true
+		self.originalImageView.hidden = false
+	}
 	
-		
+	@IBAction func compareButtonUp(sender: UIButton) {
+		self.filteredImageView.hidden = false
+		self.originalImageView.hidden = true
 	}
+	
+	@IBAction func grayscaleButton(sender: UIButton) {
+		let complextring = "Greyscale"
+		let myPipeline = Workflow(withSequence: workflowInterface(complextring))
 
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
+		if myPipeline != nil {
+			print("Could create turn_greyscale pipeline")
+			if myPipeline!.somethingWentWrong{
+				print("...but there were some problems: check spelling...")
+			}
+			myPipeline!.apply(self.originalImageView.image)
+		} else{
+			print("Could not create pipeline")
+		}
+		self.filteredImageView.image = myPipeline!.result!
+		self.filteredImageView.hidden = false
+		self.originalImageView.hidden = true
+		self.compareButton.enabled = true
 	}
-
-
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+		if (segue.identifier == "toFiltersTable") {
+			print("this")
+		}
+		else{
+			print("that")
+		}
+	}
+	
 }
 
-
-
-/*		let image = UIImage(named: "sample")
-let complextring = "   ,something,   greyscale 2 3  ,   Bright +50,   Greyscale,Scale 2,    , Contrast,,,  ,"
-workflowInterface(complextring)
-let myPipeline = Workflow(withSequence: workflowInterface(complextring))
-
-if myPipeline != nil {
-print("Could create turn_greyscale pipeline")
-if myPipeline!.somethingWentWrong{
-print("...but there were some problems: check spelling...")
-}
-myPipeline!.apply(image)
-} else{
-print("Could not create pipeline")
-}
-let result = myPipeline!.result
-
-*/
 	
