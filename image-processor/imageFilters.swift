@@ -4,16 +4,16 @@ import UIKit
 
 public var functionsDictionary = [
 	"Identity": identity,
-	"Red channel": redChannel,
-	"Green channel": greenChannel,
-	"Blue channel": blueChannel,
-	"Alpha channel": alphaChannel,
+	"Red": redChannel,
+	"Green": greenChannel,
+	"Blue": blueChannel,
+	"Alpha": alphaChannel,
 	"Bright": bright,
 	"Contrast": contrast,
 	"Greyscale": greyscale,
-	"Gamma correction": gammaCorrection,
+	"Gamma": gammaCorrection,
 	"Scale": scale,
-	"Color inversion": colorInversion,
+	"Inversion": colorInversion,
 	"Solarisation": solarisation
 ]
 
@@ -107,7 +107,7 @@ public func alphaChannel (source: UIImage, degree: Int8) -> UIImage{
 			let index = y * myRGBA.width + x
 			var pixel = myRGBA.pixels[index]
 			if pixel.alpha > 0{
-				pixel.alpha = UInt8(max(0, min(255, Int(pixel.alpha) * Int(degree))))
+				pixel.alpha = UInt8(max(0, min(255, Int(pixel.alpha) * Int(128 + Int(degree)))))
 				myRGBA.pixels[index] = pixel
 			}
 		}
