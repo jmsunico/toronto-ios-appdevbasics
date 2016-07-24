@@ -18,10 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="PwL-Jt-lUd">
-                                <rect key="frame" x="197" y="358" width="20" height="20"/>
-                                <color key="color" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QjE-tA-uVq">
                                 <rect key="frame" x="0.0" y="20" width="414" height="628"/>
                                 <subviews>
@@ -111,10 +107,8 @@
                             <constraint firstItem="QjE-tA-uVq" firstAttribute="trailing" secondItem="Nnq-cb-B5d" secondAttribute="trailing" id="A6O-nx-OxG"/>
                             <constraint firstItem="Nnq-cb-B5d" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Btz-gb-QD8"/>
                             <constraint firstItem="QjE-tA-uVq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="H8U-Xd-LAl"/>
-                            <constraint firstItem="PwL-Jt-lUd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="V4r-0V-JIg"/>
                             <constraint firstAttribute="trailing" secondItem="Nnq-cb-B5d" secondAttribute="trailing" id="Yej-le-2VH"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Nnq-cb-B5d" secondAttribute="bottom" id="lan-Q0-SCz"/>
-                            <constraint firstItem="PwL-Jt-lUd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ovu-g3-fl3"/>
                             <constraint firstItem="QjE-tA-uVq" firstAttribute="leading" secondItem="Nnq-cb-B5d" secondAttribute="leading" id="uoW-os-DJg"/>
                             <constraint firstItem="Nnq-cb-B5d" firstAttribute="top" secondItem="QjE-tA-uVq" secondAttribute="bottom" id="w6E-5a-MZC"/>
                         </constraints>
@@ -124,7 +118,6 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="SecondMenu" destination="haQ-La-Kzt" id="Ug6-Wd-uue"/>
-                        <outlet property="activityView" destination="PwL-Jt-lUd" id="V6u-7p-Aiv"/>
                         <outlet property="alphaButtonLabel" destination="YNW-W5-So1" id="sik-tf-Zwh"/>
                         <outlet property="blueButtonLabel" destination="991-YV-6tr" id="fFB-3e-vK4"/>
                         <outlet property="brightButtonLabel" destination="nBD-at-0M2" id="700-4N-VXA"/>
@@ -155,7 +148,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="132"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <stackView contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rRd-06-45B">
+                        <stackView contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rRd-06-45B">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="daZ-zu-9mY" userLabel="FilterConfStack">
@@ -203,7 +196,7 @@
                                         <constraint firstItem="qUp-35-lvT" firstAttribute="top" secondItem="daZ-zu-9mY" secondAttribute="top" id="kxN-b5-LTd"/>
                                     </constraints>
                                 </stackView>
-                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="etW-Nj-KKx">
+                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etW-Nj-KKx">
                                     <rect key="frame" x="10" y="44" width="394" height="44"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="smy-Kw-gL8" userLabel="FilteringStack">

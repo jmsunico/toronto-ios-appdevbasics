@@ -40,8 +40,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	var currentFilter = "Identity"
 	var currentParameter = "1"
 	
-	@IBOutlet weak var activityView: UIActivityIndicatorView!
-	
 	func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
 		dismissViewControllerAnimated(true, completion: nil)
 		if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
@@ -76,14 +74,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		let actionSheet = UIAlertController(title: "New Photo", message: nil, preferredStyle: .ActionSheet)
 		actionSheet.addAction((UIAlertAction(title: "Camera", style: .Default, handler: { action in
 			self.showCamera()
-			})))
+		})))
 		actionSheet.addAction((UIAlertAction(title: "Album", style: .Default, handler: { action in
 			self.showAlbum()
 		})))
 		actionSheet.addAction((UIAlertAction(title: "Cancel", style: .Default, handler: { action in
 			//
 		})))
-			self.presentViewController(actionSheet, animated: true, completion: nil)
+		self.presentViewController(actionSheet, animated: true, completion: nil)
 		softReset()
 	}
 	
@@ -120,11 +118,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		let heightConstraint = SecondMenu.heightAnchor.constraintEqualToConstant(88)
 		NSLayoutConstraint.activateConstraints([bottomConstraint, leftConstraint, rightConstraint, heightConstraint])
 		view.layoutIfNeeded()
-
+		
 		UIView.animateWithDuration(0.5){
 			self.SecondMenu.alpha = 0.75
 		}
-	
+		
 	}
 	
 	func hideSecondMenu(){
@@ -146,9 +144,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		self.view.addSubview(activityView)
-		self.view.bringSubviewToFront(activityView)
-		self.activityView.hidden = false
 		
 		// Do any additional setup after loading the view, typically from a nib.
 		onNewLabel.setImage(UIImage(named:"NewPhoto"), forState: UIControlState.Normal)
@@ -157,7 +152,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		filterButtonLabel.setImage(UIImage(named:"Filter"), forState: UIControlState.Selected)
 		compareButton.setImage(UIImage(named:"Compare"), forState: UIControlState.Normal)
 		compareButton.setImage(UIImage(named:"Compare"), forState: UIControlState.Normal)
-
+		
 		brightButtonLabel.setImage(UIImage(named:"bright"), forState: UIControlState.Normal)
 		contrastButtonLabel.setImage(UIImage(named:"contrast"), forState: UIControlState.Normal)
 		gammaButtonLabel.setImage(UIImage(named:"gamma"), forState: UIControlState.Normal)
@@ -174,11 +169,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		SecondMenu.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.25)
 		
 		self.originalImageView.image = UIImage(named: "landscape")
+		self.filteredImageView.image = UIImage(named: "landscape")
 		
 		self.filterSlider.minimumValue = -128
 		self.filterSlider.maximumValue = 127
 		self.filterSlider.continuous = false
-				
+		
 		softReset()
 	}
 	
@@ -188,7 +184,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		self.sliderValue.text = self.currentFilter + ": " + self.currentParameter
 		filterIt()
 	}
-
+	
 	@IBAction func onSaveDown(sender: AnyObject) {
 		self.infoLabel.text = "Saving as new base image!"
 		self.infoLabel.hidden = false
@@ -209,8 +205,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	func softReset(){
 		self.originalImageView.hidden = false
 		self.filteredImageView.hidden = true
-		self.filteredImageView.image = nil
-		self.activityView.hidden = true
+		self.filteredImageView.image = self.originalImageView.image
 		
 		self.infoLabel.text = ""
 		
@@ -294,7 +289,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		self.filteredImageView.hidden = true
 		self.originalImageView.hidden = false
 		self.originalImageView.alpha = 1
-
+		
 		self.sliderValue.text = "1"
 		self.filterSlider.setValue(1, animated: true)
 		self.currentFilter = "Bright"
@@ -369,9 +364,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	
 	func filterIt() {
 		self.filteredImageView.alpha = 0
-		self.activityView.hidden = false
-		self.view.bringSubviewToFront(activityView)
-		self.activityView.startAnimating()
 		let filteringCommand = self.currentFilter + " " + self.currentParameter
 		
 		let myPipeline = Workflow(withSequence: workflowInterface(filteringCommand))
@@ -387,9 +379,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		}
 		self.filteredImageView.image = myPipeline!.result!
 		self.compareButton.enabled = true
-		
-		self.activityView.stopAnimating()
-		self.activityView.hidden = true
 		
 		self.infoLabel.hidden = false
 		self.infoLabel.text = "Applying: '" + self.currentFilter + " " + self.currentParameter + "'"
@@ -440,5 +429,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	}
 	
 }
+
 
 	
