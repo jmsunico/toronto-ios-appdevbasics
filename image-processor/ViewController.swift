@@ -381,7 +381,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		self.compareButton.enabled = true
 		
 		self.infoLabel.hidden = false
-		self.infoLabel.text = "Applying: '" + self.currentFilter + " " + self.currentParameter + "'"
+		self.infoLabel.text = "Applied: '" + self.currentFilter + " " + self.currentParameter + "'"
 		original2filtered()
 	}
 	
