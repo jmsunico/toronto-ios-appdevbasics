@@ -50,11 +50,11 @@
                                     <constraint firstItem="LAa-ZC-bq7" firstAttribute="trailing" secondItem="AAL-r8-lcm" secondAttribute="trailing" id="lPM-jk-ZbQ"/>
                                 </constraints>
                             </scrollView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Nnq-cb-B5d">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Nnq-cb-B5d">
                                 <rect key="frame" x="0.0" y="648" width="414" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQh-rQ-PZC">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="76" height="44"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" button="YES" image="YES"/>
                                         </accessibility>
@@ -64,14 +64,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jkp-C3-534">
-                                        <rect key="frame" x="105" y="0.0" width="99.5" height="44"/>
+                                        <rect key="frame" x="76" y="0.0" width="85.5" height="44"/>
                                         <state key="normal" title="Filter"/>
                                         <connections>
                                             <action selector="filterButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nf5-pg-3Vd"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2DS-hN-fn0">
-                                        <rect key="frame" x="209" y="0.0" width="100" height="44"/>
+                                        <rect key="frame" x="161.5" y="0.0" width="154.5" height="44"/>
                                         <state key="normal" title="Compare"/>
                                         <connections>
                                             <action selector="compareButtonDown:" destination="BYZ-38-t0r" eventType="touchDown" id="fIb-W5-skD"/>
@@ -79,7 +79,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OrI-5e-ZrA">
-                                        <rect key="frame" x="314" y="0.0" width="99.5" height="44"/>
+                                        <rect key="frame" x="316" y="0.0" width="98" height="44"/>
                                         <state key="normal" title="Share"/>
                                         <connections>
                                             <action selector="onShare:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GJE-DC-o66"/>
