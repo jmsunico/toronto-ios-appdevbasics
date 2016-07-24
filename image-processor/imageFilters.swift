@@ -238,6 +238,7 @@ public func scale (source: UIImage, degree: Int8) -> UIImage{
 	}
 	
 	let newSize = CGSize(width: source.size.width  * scale, height: source.size.height * scale)
+	print("Image size: ", newSize)
 	let newRect = CGRectIntegral(CGRectMake(0,0, newSize.width, newSize.height))
 	UIGraphicsBeginImageContextWithOptions(newSize, false, 0)
 	let context = UIGraphicsGetCurrentContext()

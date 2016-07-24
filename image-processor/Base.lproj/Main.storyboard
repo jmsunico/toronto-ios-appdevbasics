@@ -64,21 +64,27 @@
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" button="YES" image="YES"/>
                                         </accessibility>
-                                        <state key="normal" title="New"/>
+                                        <state key="normal" title="New">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
                                         <connections>
                                             <action selector="onNewPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hqX-vn-uKS"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jkp-C3-534">
-                                        <rect key="frame" x="76" y="0.0" width="85.5" height="44"/>
-                                        <state key="normal" title="Filter"/>
+                                        <rect key="frame" x="76" y="0.0" width="86" height="44"/>
+                                        <state key="normal" title="Filter">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
                                         <connections>
                                             <action selector="filterButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nf5-pg-3Vd"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2DS-hN-fn0">
-                                        <rect key="frame" x="161.5" y="0.0" width="154.5" height="44"/>
-                                        <state key="normal" title="Compare"/>
+                                        <rect key="frame" x="162" y="0.0" width="155" height="44"/>
+                                        <state key="normal" title="Compare">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
                                         <connections>
                                             <action selector="compareButtonDown:" destination="BYZ-38-t0r" eventType="touchDown" id="fIb-W5-skD"/>
                                             <action selector="compareButtonUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FsC-yf-p3U"/>
@@ -86,12 +92,15 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OrI-5e-ZrA">
                                         <rect key="frame" x="316" y="0.0" width="98" height="44"/>
-                                        <state key="normal" title="Share"/>
+                                        <state key="normal" title="Share">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
                                         <connections>
                                             <action selector="onShare:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GJE-DC-o66"/>
                                         </connections>
                                     </button>
                                 </subviews>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="PkG-pp-RE3"/>
                                 </constraints>
@@ -130,6 +139,7 @@
                         <outlet property="greyscaleButtonLabel" destination="j4m-OU-C2k" id="Fzx-pu-wxD"/>
                         <outlet property="infoLabel" destination="TT2-C2-BI7" id="9LR-KH-nvM"/>
                         <outlet property="inversionButtonLabel" destination="fFz-GF-rQe" id="rkY-X1-2A1"/>
+                        <outlet property="myScrollView" destination="etW-Nj-KKx" id="389-4Z-Oat"/>
                         <outlet property="onNewLabel" destination="gQh-rQ-PZC" id="QLO-Q4-fXi"/>
                         <outlet property="onSaveLabel" destination="qUp-35-lvT" id="0Ae-Vi-PQ9"/>
                         <outlet property="onShareLabel" destination="OrI-5e-ZrA" id="pF7-qu-uWk"/>
@@ -141,14 +151,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <view alpha="0.5" contentMode="scaleToFill" id="haQ-La-Kzt" userLabel="Secondary Menu">
+                <view opaque="NO" alpha="0.0" contentMode="scaleToFill" id="haQ-La-Kzt" userLabel="Secondary Menu">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="132"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <stackView contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rRd-06-45B">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="132"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="daZ-zu-9mY" userLabel="FilterConfStack">
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="daZ-zu-9mY" userLabel="FilterConfStack">
                                     <rect key="frame" x="10" y="0.0" width="394" height="44"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUp-35-lvT">
@@ -184,20 +194,20 @@
                                                 <constraint firstAttribute="height" constant="44" id="z9R-Wz-P6s"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="qUp-35-lvT" secondAttribute="bottom" id="Oxf-od-Q9r"/>
                                         <constraint firstItem="qUp-35-lvT" firstAttribute="top" secondItem="daZ-zu-9mY" secondAttribute="top" id="kxN-b5-LTd"/>
                                     </constraints>
                                 </stackView>
-                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="etW-Nj-KKx">
+                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etW-Nj-KKx">
                                     <rect key="frame" x="10" y="44" width="394" height="88"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="smy-Kw-gL8" userLabel="FilteringStack">
-                                            <rect key="frame" x="8" y="0.0" width="798" height="44"/>
+                                            <rect key="frame" x="8" y="0.0" width="871" height="44"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4m-OU-C2k" userLabel="Greys">
                                                     <rect key="frame" x="0.0" y="0.0" width="68" height="44"/>
@@ -309,6 +319,12 @@
                                                         <action selector="scaleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Hb-y7-eRZ"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EQa-jU-qa2" userLabel=" ">
+                                                    <rect key="frame" x="803" y="0.0" width="68" height="44"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                                    </accessibility>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="2cm-uJ-Ooj"/>
@@ -332,7 +348,8 @@
                             </constraints>
                         </stackView>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="rRd-06-45B" secondAttribute="trailing" id="5jh-lF-iuB"/>
                         <constraint firstItem="rRd-06-45B" firstAttribute="top" secondItem="haQ-La-Kzt" secondAttribute="top" id="BYs-G1-8qH"/>

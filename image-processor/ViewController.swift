@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+	@IBOutlet weak var myScrollView: UIScrollView!
 	
 	@IBOutlet weak var infoLabel: UILabel!
 	@IBOutlet weak var firstMenu: UIStackView!
@@ -177,7 +178,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		self.filterSlider.minimumValue = -128
 		self.filterSlider.maximumValue = 127
 		self.filterSlider.continuous = false
-		
+				
 		softReset()
 	}
 	
