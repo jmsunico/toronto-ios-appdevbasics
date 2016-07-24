@@ -166,6 +166,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		redButtonLabel.setImage(UIImage(named:"red"), forState: UIControlState.Normal)
 		greenButtonLabel.setImage(UIImage(named:"green"), forState: UIControlState.Normal)
 		blueButtonLabel.setImage(UIImage(named:"blue"), forState: UIControlState.Normal)
+		scaleButtonLabel.setImage(UIImage(named:"resize"), forState: UIControlState.Normal)
+		alphaButtonLabel.setImage(UIImage(named:"alpha"), forState: UIControlState.Normal)
 		
 		SecondMenu.translatesAutoresizingMaskIntoConstraints = false
 		SecondMenu.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.25)
