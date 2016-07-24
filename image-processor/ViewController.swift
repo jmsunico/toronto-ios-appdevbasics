@@ -46,23 +46,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
 			self.originalImageView.image = image
 			softReset()
+			self.infoLabel.text = ""
+			self.filteredImageView.image = self.originalImageView.image
+			self.filteredImageView.hidden = true
+			self.originalImageView.hidden = false
+			self.originalImageView.alpha = 1
 		}
 	}
-	
-
 	
 	func imagePickerControllerDidCancel(picker: UIImagePickerController) {
 		dismissViewControllerAnimated(true, completion: nil)
 	}
 	@IBAction func onShare(sender: AnyObject) {
-		hideSecondMenu()
+		self.originalImageView.image = self.filteredImageView.image
 		self.filterButtonLabel.selected = false
-		let activityController = UIActivityViewController(activityItems: [originalImageView.image!], applicationActivities: nil)
+		let activityController = UIActivityViewController(activityItems: [self.originalImageView.image!], applicationActivities: nil)
 		presentViewController(activityController, animated: true, completion: nil)
+		softReset()
+		self.infoLabel.text = ""
+		self.filteredImageView.image = self.originalImageView.image
+		self.filteredImageView.hidden = true
+		self.originalImageView.hidden = false
+		self.originalImageView.alpha = 1
 	}
 	
 	@IBAction func onNewPhoto(sender: AnyObject) {
-		hideSecondMenu()
 		self.filterButtonLabel.selected = false
 		let actionSheet = UIAlertController(title: "New Photo", message: nil, preferredStyle: .ActionSheet)
 		actionSheet.addAction((UIAlertAction(title: "Camera", style: .Default, handler: { action in
@@ -75,6 +83,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 			//
 		})))
 			self.presentViewController(actionSheet, animated: true, completion: nil)
+		softReset()
 	}
 	
 	func showCamera(){
@@ -201,7 +210,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		self.activityView.hidden = true
 		
 		self.infoLabel.text = ""
-		self.infoLabel.hidden = true
 		
 		self.compareButton.enabled = false
 		hideSecondMenu()
@@ -210,26 +218,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	
 	@IBOutlet weak var onSaveLabel: UIButton!
 	
-	@IBAction func compareButtonDown(sender: UIButton) {
-		self.infoLabel.text = "Last saved image"
-		self.infoLabel.hidden = false
-		self.originalImageView.hidden = false
-		UIView.animateWithDuration(0.5){
-			self.filteredImageView.alpha = 0
-		}
-	}
-	
-	@IBAction func compareButtonUp(sender: UIButton) {
-		self.infoLabel.text = "Current image"
-		UIView.animateWithDuration(1){
-			self.filteredImageView.alpha = 1
-		}
-	}
-	
 	@IBAction func greyscaleButton(sender: UIButton) {
 		self.infoLabel.text = ""
+		self.filteredImageView.image = self.originalImageView.image
 		self.filteredImageView.hidden = true
 		self.originalImageView.hidden = false
+		self.originalImageView.alpha = 1
 		
 		filterSlider.enabled = false
 		self.sliderValue.text = "1"
@@ -240,8 +234,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	
 	@IBAction func redButton(sender: UIButton) {
 		self.infoLabel.text = ""
+		self.filteredImageView.image = self.originalImageView.image
 		self.filteredImageView.hidden = true
 		self.originalImageView.hidden = false
+		self.originalImageView.alpha = 1
 		
 		self.sliderValue.text = "1"
 		self.filterSlider.setValue(1, animated: true)
@@ -251,8 +247,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	
 	@IBAction func greenButton(sender: UIButton) {
 		self.infoLabel.text = ""
+		self.filteredImageView.image = self.originalImageView.image
 		self.filteredImageView.hidden = true
 		self.originalImageView.hidden = false
+		self.originalImageView.alpha = 1
 		
 		self.sliderValue.text = "1"
 		self.filterSlider.setValue(1, animated: true)
@@ -263,8 +261,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	
 	@IBAction func blueButton(sender: UIButton) {
 		self.infoLabel.text = ""
+		self.filteredImageView.image = self.originalImageView.image
 		self.filteredImageView.hidden = true
 		self.originalImageView.hidden = false
+		self.originalImageView.alpha = 1
 		
 		self.sliderValue.text = "1"
 		self.filterSlider.setValue(1, animated: true)
@@ -274,8 +274,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	
 	@IBAction func alphaButton(sender: UIButton) {
 		self.infoLabel.text = ""
+		self.filteredImageView.image = self.originalImageView.image
 		self.filteredImageView.hidden = true
 		self.originalImageView.hidden = false
+		self.originalImageView.alpha = 1
 		
 		self.sliderValue.text = "1"
 		self.filterSlider.setValue(1, animated: true)
@@ -285,8 +287,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	
 	@IBAction func brightButton(sender: UIButton) {
 		self.infoLabel.text = ""
+		self.filteredImageView.image = self.originalImageView.image
 		self.filteredImageView.hidden = true
 		self.originalImageView.hidden = false
+		self.originalImageView.alpha = 1
 
 		self.sliderValue.text = "1"
 		self.filterSlider.setValue(1, animated: true)
@@ -296,8 +300,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	
 	@IBAction func contrastButton(sender: UIButton) {
 		self.infoLabel.text = ""
+		self.filteredImageView.image = self.originalImageView.image
 		self.filteredImageView.hidden = true
 		self.originalImageView.hidden = false
+		self.originalImageView.alpha = 1
 		
 		self.sliderValue.text = "1"
 		self.filterSlider.setValue(1, animated: true)
@@ -307,8 +313,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	
 	@IBAction func gammaButton(sender: UIButton) {
 		self.infoLabel.text = ""
+		self.filteredImageView.image = self.originalImageView.image
 		self.filteredImageView.hidden = true
 		self.originalImageView.hidden = false
+		self.originalImageView.alpha = 1
 		
 		self.sliderValue.text = "1"
 		self.filterSlider.setValue(1, animated: true)
@@ -318,8 +326,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	
 	@IBAction func solarisationButton(sender: UIButton) {
 		self.infoLabel.text = ""
+		self.filteredImageView.image = self.originalImageView.image
 		self.filteredImageView.hidden = true
 		self.originalImageView.hidden = false
+		self.originalImageView.alpha = 1
 		
 		self.sliderValue.text = "1"
 		self.filterSlider.setValue(1, animated: true)
@@ -329,8 +339,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	
 	@IBAction func inversionButton(sender: UIButton) {
 		self.infoLabel.text = ""
+		self.filteredImageView.image = self.originalImageView.image
 		self.filteredImageView.hidden = true
 		self.originalImageView.hidden = false
+		self.originalImageView.alpha = 1
 		
 		self.filterSlider.enabled = false
 		self.sliderValue.text = "1"
@@ -341,8 +353,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	
 	@IBAction func scaleButton(sender: UIButton) {
 		self.infoLabel.text = ""
+		self.filteredImageView.image = self.originalImageView.image
 		self.filteredImageView.hidden = true
 		self.originalImageView.hidden = false
+		self.originalImageView.alpha = 1
 		
 		self.sliderValue.text = "1"
 		self.filterSlider.setValue(1, animated: true)
@@ -374,13 +388,43 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		self.activityView.stopAnimating()
 		self.activityView.hidden = true
 		
-		self.filteredImageView.hidden = false
-		self.filteredImageView.alpha = 0
-		UIView.animateWithDuration(0.5){
-			self.filteredImageView.alpha = 1
+		self.infoLabel.hidden = false
+		self.infoLabel.text = "Applying: '" + self.currentFilter + " " + self.currentParameter + "'"
+		original2filtered()
+	}
+	
+	
+	func original2filtered () {
+		self.filteredImageView.alpha=0
+		self.originalImageView.alpha=1
+		self.filteredImageView.hidden=false
+		self.originalImageView.hidden=false
+		UIView.animateWithDuration(1){
+			self.filteredImageView.alpha=1
+			self.originalImageView.alpha=0
 		}
-		self.filteredImageView.hidden = false
-		self.originalImageView.hidden = true
+	}
+	
+	func filtered2original(){
+		self.filteredImageView.alpha=1
+		self.originalImageView.alpha=0
+		self.filteredImageView.hidden=false
+		self.originalImageView.hidden=false
+		
+		UIView.animateWithDuration(1){
+			self.filteredImageView.alpha=0
+			self.originalImageView.alpha=1
+		}
+	}
+	
+	@IBAction func compareButtonDown(sender: UIButton) {
+		self.infoLabel.text = "Last saved image"
+		filtered2original()
+	}
+	
+	@IBAction func compareButtonUp(sender: UIButton) {
+		self.infoLabel.text = "Current image"
+		original2filtered()
 	}
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
