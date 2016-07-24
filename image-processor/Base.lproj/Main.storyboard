@@ -155,8 +155,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="132"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <stackView contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rRd-06-45B">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="132"/>
+                        <stackView contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rRd-06-45B">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="daZ-zu-9mY" userLabel="FilterConfStack">
                                     <rect key="frame" x="10" y="0.0" width="394" height="44"/>
@@ -203,8 +203,8 @@
                                         <constraint firstItem="qUp-35-lvT" firstAttribute="top" secondItem="daZ-zu-9mY" secondAttribute="top" id="kxN-b5-LTd"/>
                                     </constraints>
                                 </stackView>
-                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etW-Nj-KKx">
-                                    <rect key="frame" x="10" y="44" width="394" height="88"/>
+                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="etW-Nj-KKx">
+                                    <rect key="frame" x="10" y="44" width="394" height="44"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="smy-Kw-gL8" userLabel="FilteringStack">
                                             <rect key="frame" x="8" y="0.0" width="871" height="44"/>
@@ -335,6 +335,7 @@
                                         <constraint firstItem="smy-Kw-gL8" firstAttribute="leading" secondItem="etW-Nj-KKx" secondAttribute="leadingMargin" id="7jC-rI-L1y"/>
                                         <constraint firstAttribute="bottom" secondItem="smy-Kw-gL8" secondAttribute="bottom" constant="44" id="DyJ-Sy-gpj"/>
                                         <constraint firstItem="smy-Kw-gL8" firstAttribute="top" secondItem="etW-Nj-KKx" secondAttribute="top" id="U7f-RE-LL9"/>
+                                        <constraint firstAttribute="height" constant="44" id="Ve1-DH-REh"/>
                                         <constraint firstAttribute="trailing" secondItem="smy-Kw-gL8" secondAttribute="trailing" constant="-70" id="hJ1-jx-1zk" userLabel="trailing = FilteringStack.trailing - 150"/>
                                     </constraints>
                                 </scrollView>
