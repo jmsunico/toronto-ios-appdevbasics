@@ -4,16 +4,16 @@ import UIKit
 
 public var functionsDictionary = [
 	"Identity": identity,
-	"Red channel": redChannel,
-	"Green channel": greenChannel,
-	"Blue channel": blueChannel,
-	"Alpha channel": alphaChannel,
+	"Red": redChannel,
+	"Green": greenChannel,
+	"Blue": blueChannel,
+	"Alpha": alphaChannel,
 	"Bright": bright,
 	"Contrast": contrast,
 	"Greyscale": greyscale,
-	"Gamma correction": gammaCorrection,
+	"Gamma": gammaCorrection,
 	"Scale": scale,
-	"Color inversion": colorInversion,
+	"Inversion": colorInversion,
 	"Solarisation": solarisation
 ]
 
@@ -107,7 +107,7 @@ public func alphaChannel (source: UIImage, degree: Int8) -> UIImage{
 			let index = y * myRGBA.width + x
 			var pixel = myRGBA.pixels[index]
 			if pixel.alpha > 0{
-				pixel.alpha = UInt8(max(0, min(255, Int(pixel.alpha) * Int(degree))))
+				pixel.alpha = UInt8(max(0, min(255, Int(pixel.alpha) * Int(128 + Int(degree)))))
 				myRGBA.pixels[index] = pixel
 			}
 		}
@@ -158,7 +158,7 @@ public func contrast (source: UIImage, degree: Int8) -> UIImage{
 
 //Greyscale conversion: A recommended formula is "Red * 0.299 + Green * 0.587 + Blue * 0.114"
 public func greyscale (source: UIImage, degree: Int8) -> UIImage{
-	print("Generating a grayscale version of the image...")
+	print("Generating a greyscale version of the image...")
 	var myRGBA = RGBAImage(image: source)!
 	for y in 0..<myRGBA.height {
 		for x in 0..<myRGBA.width {
@@ -178,14 +178,15 @@ public func greyscale (source: UIImage, degree: Int8) -> UIImage{
 public func gammaCorrection (source: UIImage, degree: Int8) -> UIImage{
 	print("Performing gamma correction of the image...")
 	var myRGBA = RGBAImage(image: source)!
-	let gammaCorrection = 1.0 / Double(degree)
+	let gamma = 4 / (128 - Int(degree))
+	let gammaCorrection = 1.0 / Double(gamma)
 	for y in 0..<myRGBA.height {
 		for x in 0..<myRGBA.width {
 			let index = y * myRGBA.width + x
 			var pixel = myRGBA.pixels[index]
-			pixel.red = UInt8(255 * pow(Double(pixel.red) / 255.0, gammaCorrection))
-			pixel.green = UInt8(255 * pow(Double(pixel.green) / 255.0, gammaCorrection))
-			pixel.blue = UInt8(255 * pow(Double(pixel.blue) / 255.0, gammaCorrection))
+			pixel.red = UInt8(255 * pow((Double(pixel.red) / 255.0), gammaCorrection))
+			pixel.green = UInt8(255 * pow((Double(pixel.green) / 255.0), gammaCorrection))
+			pixel.blue = UInt8(255 * pow((Double(pixel.blue) / 255.0), gammaCorrection))
 			myRGBA.pixels[index] = pixel
 		}
 	}
@@ -195,7 +196,7 @@ public func gammaCorrection (source: UIImage, degree: Int8) -> UIImage{
 
 //Color inversion (a particular type of "solarisation
 public func colorInversion (source: UIImage, degree: Int8) -> UIImage{
-	print("Performing color inverion...")
+	print("Performing color inversion...")
 	let inverted = solarisation(source, degree: -128)
 	print("Color inversion performed!")
 	return(inverted)
@@ -203,7 +204,7 @@ public func colorInversion (source: UIImage, degree: Int8) -> UIImage{
 
 //If COLOR > threshold => COLOR_SOLARISED = 255 - COLOR
 public func solarisation (source: UIImage, degree: Int8) -> UIImage{
-	print("Performing gamma correction of the image...")
+	print("Performing solarisation of the image...")
 	var myRGBA = RGBAImage(image: source)!
 	for y in 0..<myRGBA.height {
 		for x in 0..<myRGBA.width {
@@ -223,7 +224,7 @@ public func solarisation (source: UIImage, degree: Int8) -> UIImage{
 			myRGBA.pixels[index] = pixel
 		}
 	}
-	print("Gamma correction performed!")
+	print("Solarisation performed!")
 	return(myRGBA.toUIImage())!
 }
 
@@ -240,5 +241,4 @@ public func scale (source: UIImage, degree: Int8) -> UIImage{
 	let newImage = UIImage(CGImage: CGBitmapContextCreateImage(context)!)
 	UIGraphicsEndImageContext()
 	return newImage
-	
 }

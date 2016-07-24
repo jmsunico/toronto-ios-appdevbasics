@@ -53,7 +53,7 @@ redChannel(image!, degree: -100)
 //		its internal "apply(image: UIImage)" method. Let's see an example:
 //			3a. First we define the "pipeline"
 
-var Enhance_Red_Then_Solarise = Workflow(withSequence:[("Red channel", 75), ("Solarisation", 75)])
+var Enhance_Red_Then_Solarise = Workflow(withSequence:[("Red", 75), ("Solarisation", 75)])
 
 //			3b. Then we can apply it to any image
 
@@ -66,7 +66,7 @@ if Enhance_Red_Then_Solarise != nil {
 
 //			3c. Now we check that order matters
 
-var Solarise_Then_Enhance_Red = Workflow(withSequence:[("Solarisation", 75), ("Red channel", 75)])
+var Solarise_Then_Enhance_Red = Workflow(withSequence:[("Solarisation", 75), ("Red", 75)])
 if Solarise_Then_Enhance_Red != nil {
 	Solarise_Then_Enhance_Red!.apply(image)
 	Solarise_Then_Enhance_Red!.result
@@ -83,8 +83,8 @@ if Solarise_Then_Enhance_Red != nil {
 //
 //			4a. Operator '<<' allows combining (concatenating) pipeline's stages:
 
-var red_down = Workflow(withSequence: [("Red channel", -50)])
-var blue_up = Workflow(withSequence: [("Blue channel", -50)])
+var red_down = Workflow(withSequence: [("Red", -50)])
+var blue_up = Workflow(withSequence: [("Blue", -50)])
 
 //				Which (should) give(s) the same result as:
 
@@ -162,6 +162,8 @@ if turn_greyscale != nil {
 //				Here is an example of the parsing and obtention of a type-correct array of tuples
 
 var complextring = "   ,something,   greyscale 2 3  ,   Bright +50,   Greyscale,Scale 2,    , Contrast,,,  ,"
+
+complextring = "Gamma 124"
 workflowInterface(complextring)
 
 //			Then we just can initialise a pipeline with the result of this function.

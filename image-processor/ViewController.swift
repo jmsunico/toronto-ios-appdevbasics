@@ -10,12 +10,19 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 	
+	@IBOutlet weak var infoLabel: UILabel!
 	@IBOutlet weak var firstMenu: UIStackView!
 	@IBOutlet weak var SecondMenu: UIView!
 	@IBOutlet weak var originalImageView: UIImageView!
 	@IBOutlet weak var filteredImageView: UIImageView!
+	
+	@IBOutlet weak var onNewLabel: UIButton!
+	@IBOutlet weak var onShareLabel: UIButton!
+	@IBOutlet weak var filterButtonLabel: UIButton!
 	@IBOutlet weak var compareButton: UIButton!
+	
 	@IBOutlet weak var filterSlider: UISlider!
+	@IBOutlet weak var sliderValue: UILabel!
 	
 	var currentFilter = "Identity"
 	var currentParameter = "1"
@@ -24,23 +31,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
 		dismissViewControllerAnimated(true, completion: nil)
 		if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
-			
-			self.compareButton.enabled = false
-			
-			self.currentFilter = "Identity"
-			self.currentParameter = "1"
-
-			self.filterSlider.setValue(1, animated: true)
-			self.filterSlider.enabled = false
-		
-			
 			self.originalImageView.image = image
-			self.filteredImageView.image = nil
-
-			self.filteredImageView.hidden = true
-			self.originalImageView.hidden = false
+			softReset()
 		}
 	}
+	
+
 	
 	func imagePickerControllerDidCancel(picker: UIImagePickerController) {
 		dismissViewControllerAnimated(true, completion: nil)
@@ -82,7 +78,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		presentViewController(cameraPicker, animated: true, completion: nil)
 	}
 	
-	@IBOutlet weak var filterButtonLabel: UIButton!
 	@IBAction func filterButton(sender: UIButton) {
 		if (sender.selected){
 			hideSecondMenu()
@@ -115,36 +110,81 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		}) {_ in
 			self.SecondMenu.removeFromSuperview()
 		}
-		filterSlider.enabled = false
+		
+		self.currentFilter = "Identity"
+		self.currentParameter = "1"
+		
+		self.sliderValue.text = "1"
+		self.filterSlider.setValue(1, animated: true)
+		self.filterSlider.enabled = false
+		self.filterButtonLabel.selected = false
+		
 	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
-		self.originalImageView.image = UIImage(named: "landscape")
-		self.filteredImageView.hidden = true
-		self.originalImageView.hidden = false
-		self.compareButton.enabled = false
+		onNewLabel.setImage(UIImage(named:"NewPhoto"), forState: UIControlState.Normal)
+		onShareLabel.setImage(UIImage(named:"Share"), forState: UIControlState.Normal)
+		filterButtonLabel.setImage(UIImage(named:"Filter"), forState: UIControlState.Normal)
+		filterButtonLabel.setImage(UIImage(named:"Filter"), forState: UIControlState.Selected)
+		compareButton.setImage(UIImage(named:"Compare"), forState: UIControlState.Normal)
+		compareButton.setImage(UIImage(named:"Compare"), forState: UIControlState.Normal)
 		
 		SecondMenu.translatesAutoresizingMaskIntoConstraints = false
 		SecondMenu.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.25)
 		
+		self.originalImageView.image = UIImage(named: "landscape")
+		
 		self.filterSlider.minimumValue = -128
 		self.filterSlider.maximumValue = 127
 		self.filterSlider.continuous = false
-		self.filterSlider.setValue(1, animated: true)
-		self.filterSlider.enabled = false
+		
+		softReset()
 	}
-
+	
 	@IBAction func filterSliderValue(sender: UISlider) {
 		let value = Int8(round(sender.value / 1) * 1)
 		self.currentParameter = String(value)
+		self.sliderValue.text = self.currentParameter
 		filterIt()
+	}
+
+	@IBAction func onSaveDown(sender: AnyObject) {
+		self.infoLabel.text = "Saving as new base image!"
+		self.infoLabel.hidden = false
+		self.originalImageView.image = self.filteredImageView.image
+		self.originalImageView.alpha = 0
+		UIView.animateWithDuration(0.5){
+			self.originalImageView.alpha = 0
+		}
+	}
+	
+	@IBAction func onSaveUp(sender: UIButton) {
+		UIView.animateWithDuration(0.5){
+			self.originalImageView.alpha = 1
+		}
+		softReset()
+	}
+	
+	func softReset(){
+		self.originalImageView.hidden = false
+		self.filteredImageView.hidden = true
+		self.filteredImageView.image = nil
+		
+		self.infoLabel.text = ""
+		self.infoLabel.hidden = true
+		
+		self.compareButton.enabled = false
+		hideSecondMenu()
 	}
 	
 	
+	@IBOutlet weak var onSaveLabel: UIButton!
 	
 	@IBAction func compareButtonDown(sender: UIButton) {
+		self.infoLabel.text = "Last saved image"
+		self.infoLabel.hidden = false
 		self.originalImageView.hidden = false
 		UIView.animateWithDuration(0.5){
 			self.filteredImageView.alpha = 0
@@ -152,9 +192,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	}
 	
 	@IBAction func compareButtonUp(sender: UIButton) {
-		UIView.animateWithDuration(0.5){
+		UIView.animateWithDuration(1){
+			self.infoLabel.text = "Current image"
 			self.filteredImageView.alpha = 1
 		}
+		self.infoLabel.text = ""
+		self.infoLabel.hidden = true
 	}
 	
 	@IBAction func greyscaleButton(sender: UIButton) {
