@@ -18,14 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="PwL-Jt-lUd">
+                                <rect key="frame" x="197" y="358" width="20" height="20"/>
+                                <color key="color" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QjE-tA-uVq">
                                 <rect key="frame" x="0.0" y="20" width="414" height="628"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="landscape" translatesAutoresizingMaskIntoConstraints="NO" id="AAL-r8-lcm" userLabel="original">
-                                        <rect key="frame" x="0.0" y="0.0" width="1280" height="853"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="landscape" translatesAutoresizingMaskIntoConstraints="NO" id="LAa-ZC-bq7" userLabel="filtered">
                                         <rect key="frame" x="0.0" y="0.0" width="1280" height="853"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </imageView>
@@ -35,14 +35,20 @@
                                         <color key="textColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="landscape" translatesAutoresizingMaskIntoConstraints="NO" id="LAa-ZC-bq7" userLabel="filtered">
+                                        <rect key="frame" x="0.0" y="0.0" width="1280" height="853"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="TT2-C2-BI7" firstAttribute="centerX" secondItem="QjE-tA-uVq" secondAttribute="centerX" id="0FG-Bq-7d2"/>
                                     <constraint firstItem="TT2-C2-BI7" firstAttribute="centerX" secondItem="QjE-tA-uVq" secondAttribute="centerX" id="7Ot-zQ-i9G"/>
                                     <constraint firstItem="TT2-C2-BI7" firstAttribute="centerY" secondItem="QjE-tA-uVq" secondAttribute="centerY" id="GBU-j5-ort"/>
                                     <constraint firstItem="LAa-ZC-bq7" firstAttribute="leading" secondItem="AAL-r8-lcm" secondAttribute="leading" id="I2b-mV-LL9"/>
                                     <constraint firstItem="AAL-r8-lcm" firstAttribute="top" secondItem="QjE-tA-uVq" secondAttribute="top" id="KZb-fI-bJD"/>
                                     <constraint firstItem="LAa-ZC-bq7" firstAttribute="leading" secondItem="QjE-tA-uVq" secondAttribute="leading" id="WZL-tz-iWY"/>
+                                    <constraint firstItem="TT2-C2-BI7" firstAttribute="centerY" secondItem="QjE-tA-uVq" secondAttribute="centerY" id="ZFF-kI-qNX"/>
                                     <constraint firstAttribute="bottom" secondItem="LAa-ZC-bq7" secondAttribute="bottom" constant="494" id="d9f-Qn-V9r"/>
                                     <constraint firstItem="LAa-ZC-bq7" firstAttribute="bottom" secondItem="AAL-r8-lcm" secondAttribute="bottom" id="gXs-Jo-0h9"/>
                                     <constraint firstItem="AAL-r8-lcm" firstAttribute="top" secondItem="LAa-ZC-bq7" secondAttribute="top" id="iPf-yi-L6l"/>
@@ -96,8 +102,10 @@
                             <constraint firstItem="QjE-tA-uVq" firstAttribute="trailing" secondItem="Nnq-cb-B5d" secondAttribute="trailing" id="A6O-nx-OxG"/>
                             <constraint firstItem="Nnq-cb-B5d" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Btz-gb-QD8"/>
                             <constraint firstItem="QjE-tA-uVq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="H8U-Xd-LAl"/>
+                            <constraint firstItem="PwL-Jt-lUd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="V4r-0V-JIg"/>
                             <constraint firstAttribute="trailing" secondItem="Nnq-cb-B5d" secondAttribute="trailing" id="Yej-le-2VH"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Nnq-cb-B5d" secondAttribute="bottom" id="lan-Q0-SCz"/>
+                            <constraint firstItem="PwL-Jt-lUd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ovu-g3-fl3"/>
                             <constraint firstItem="QjE-tA-uVq" firstAttribute="leading" secondItem="Nnq-cb-B5d" secondAttribute="leading" id="uoW-os-DJg"/>
                             <constraint firstItem="Nnq-cb-B5d" firstAttribute="top" secondItem="QjE-tA-uVq" secondAttribute="bottom" id="w6E-5a-MZC"/>
                         </constraints>
@@ -107,17 +115,29 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="SecondMenu" destination="haQ-La-Kzt" id="Ug6-Wd-uue"/>
+                        <outlet property="activityView" destination="PwL-Jt-lUd" id="V6u-7p-Aiv"/>
+                        <outlet property="alphaButtonLabel" destination="YNW-W5-So1" id="sik-tf-Zwh"/>
+                        <outlet property="blueButtonLabel" destination="991-YV-6tr" id="fFB-3e-vK4"/>
+                        <outlet property="brightButtonLabel" destination="nBD-at-0M2" id="700-4N-VXA"/>
                         <outlet property="compareButton" destination="2DS-hN-fn0" id="B9Q-AZ-MYL"/>
+                        <outlet property="contrastButtonLabel" destination="WC3-VP-eYS" id="oGT-09-t8l"/>
                         <outlet property="filterButtonLabel" destination="Jkp-C3-534" id="4Yu-hM-7p1"/>
                         <outlet property="filterSlider" destination="DRu-kt-C8b" id="SZd-PA-sUF"/>
                         <outlet property="filteredImageView" destination="LAa-ZC-bq7" id="b7J-6K-NBs"/>
                         <outlet property="firstMenu" destination="Nnq-cb-B5d" id="u4q-7C-SQU"/>
+                        <outlet property="gammaButtonLabel" destination="hcG-b4-wjf" id="lAR-27-rXg"/>
+                        <outlet property="greenButtonLabel" destination="eJm-9A-ZXa" id="50B-DX-gfK"/>
+                        <outlet property="greyscaleButtonLabel" destination="j4m-OU-C2k" id="Fzx-pu-wxD"/>
                         <outlet property="infoLabel" destination="TT2-C2-BI7" id="9LR-KH-nvM"/>
+                        <outlet property="inversionButtonLabel" destination="fFz-GF-rQe" id="rkY-X1-2A1"/>
                         <outlet property="onNewLabel" destination="gQh-rQ-PZC" id="QLO-Q4-fXi"/>
                         <outlet property="onSaveLabel" destination="qUp-35-lvT" id="0Ae-Vi-PQ9"/>
                         <outlet property="onShareLabel" destination="OrI-5e-ZrA" id="pF7-qu-uWk"/>
                         <outlet property="originalImageView" destination="AAL-r8-lcm" id="SZz-1Q-eiL"/>
+                        <outlet property="redButtonLabel" destination="LT8-SO-TII" id="ocp-7B-SHK"/>
+                        <outlet property="scaleButtonLabel" destination="3P6-zk-iZn" id="rXT-oA-VVz"/>
                         <outlet property="sliderValue" destination="vgd-Tg-mCa" id="yu0-fy-ffG"/>
+                        <outlet property="solarisationButtonLabel" destination="2Z7-Kl-f92" id="qsL-jt-JCy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -128,7 +148,7 @@
                         <stackView contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rRd-06-45B">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="132"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="daZ-zu-9mY" userLabel="FilterConfStack">
+                                <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="daZ-zu-9mY" userLabel="FilterConfStack">
                                     <rect key="frame" x="10" y="0.0" width="394" height="44"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUp-35-lvT">
@@ -147,9 +167,9 @@
                                             </connections>
                                         </button>
                                         <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="-125" maxValue="125" translatesAutoresizingMaskIntoConstraints="NO" id="DRu-kt-C8b">
-                                            <rect key="frame" x="68" y="0.0" width="254" height="45"/>
+                                            <rect key="frame" x="68" y="0.0" width="288" height="45"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="250" id="XhH-bH-O90"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="XhH-bH-O90"/>
                                                 <constraint firstAttribute="height" constant="44" id="vwf-k8-bTD"/>
                                             </constraints>
                                             <connections>
@@ -157,10 +177,10 @@
                                             </connections>
                                         </slider>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgd-Tg-mCa">
-                                            <rect key="frame" x="330" y="0.0" width="64" height="44"/>
+                                            <rect key="frame" x="364" y="0.0" width="31" height="44"/>
                                             <accessibility key="accessibilityConfiguration" hint="Slider Value"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="60" id="E0q-jH-kpT"/>
+                                                <constraint firstAttribute="width" constant="132" id="E0q-jH-kpT"/>
                                                 <constraint firstAttribute="height" constant="44" id="z9R-Wz-P6s"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -176,11 +196,14 @@
                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="etW-Nj-KKx">
                                     <rect key="frame" x="10" y="44" width="394" height="88"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="smy-Kw-gL8" userLabel="FilteringStack">
-                                            <rect key="frame" x="8" y="0.0" width="748" height="44"/>
+                                        <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="smy-Kw-gL8" userLabel="FilteringStack">
+                                            <rect key="frame" x="8" y="0.0" width="798" height="44"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4m-OU-C2k" userLabel="Greyscale">
-                                                    <rect key="frame" x="0.0" y="7" width="68" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4m-OU-C2k" userLabel="Greys">
+                                                    <rect key="frame" x="0.0" y="0.0" width="68" height="44"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                                    </accessibility>
                                                     <state key="normal" title="Greyscale">
                                                         <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -189,16 +212,22 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nBD-at-0M2" userLabel="Bright">
-                                                    <rect key="frame" x="68" y="7" width="68" height="30"/>
+                                                    <rect key="frame" x="73" y="0.0" width="68" height="44"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                                    </accessibility>
                                                     <state key="normal" title="Bright">
                                                         <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="brightButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MBX-pU-1Qb"/>
+                                                        <action selector="brightButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZvO-qh-BVK"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WC3-VP-eYS">
-                                                    <rect key="frame" x="136" y="7" width="68" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WC3-VP-eYS" userLabel="Contrast">
+                                                    <rect key="frame" x="146" y="0.0" width="68" height="44"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                                    </accessibility>
                                                     <state key="normal" title="Contrast">
                                                         <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -207,7 +236,10 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fFz-GF-rQe" userLabel="Invert">
-                                                    <rect key="frame" x="204" y="7" width="68" height="30"/>
+                                                    <rect key="frame" x="219" y="0.0" width="68" height="44"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                                    </accessibility>
                                                     <state key="normal" title="Invert">
                                                         <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -216,7 +248,10 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Z7-Kl-f92" userLabel="Solarise">
-                                                    <rect key="frame" x="272" y="7" width="68" height="30"/>
+                                                    <rect key="frame" x="292" y="0.0" width="68" height="44"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                                    </accessibility>
                                                     <state key="normal" title="Solarise">
                                                         <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -224,8 +259,11 @@
                                                         <action selector="solarisationButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PKH-H4-v4e"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcG-b4-wjf">
-                                                    <rect key="frame" x="340" y="7" width="68" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcG-b4-wjf" userLabel="Gamma">
+                                                    <rect key="frame" x="365" y="0.0" width="68" height="44"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                                    </accessibility>
                                                     <state key="normal" title="Gamma">
                                                         <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -234,7 +272,10 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LT8-SO-TII" userLabel="Red">
-                                                    <rect key="frame" x="408" y="7" width="68" height="30"/>
+                                                    <rect key="frame" x="438" y="0.0" width="68" height="44"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                                    </accessibility>
                                                     <state key="normal" title="Red">
                                                         <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -243,7 +284,10 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJm-9A-ZXa" userLabel="Green">
-                                                    <rect key="frame" x="476" y="7" width="68" height="30"/>
+                                                    <rect key="frame" x="511" y="0.0" width="68" height="44"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                                    </accessibility>
                                                     <state key="normal" title="Green">
                                                         <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -252,7 +296,10 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="991-YV-6tr" userLabel="Blue">
-                                                    <rect key="frame" x="544" y="7" width="68" height="30"/>
+                                                    <rect key="frame" x="584" y="0.0" width="68" height="44"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                                    </accessibility>
                                                     <state key="normal" title="Blue">
                                                         <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -260,8 +307,11 @@
                                                         <action selector="blueButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z2V-cV-Jrx"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YNW-W5-So1">
-                                                    <rect key="frame" x="612" y="7" width="68" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YNW-W5-So1" userLabel="Alpha">
+                                                    <rect key="frame" x="657" y="0.0" width="68" height="44"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                                    </accessibility>
                                                     <state key="normal" title="Alpha">
                                                         <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -270,7 +320,10 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3P6-zk-iZn" userLabel="Scale">
-                                                    <rect key="frame" x="680" y="7" width="68" height="30"/>
+                                                    <rect key="frame" x="730" y="0.0" width="68" height="44"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                                    </accessibility>
                                                     <state key="normal" title="Scale">
                                                         <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>

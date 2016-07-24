@@ -163,7 +163,7 @@ if turn_greyscale != nil {
 
 var complextring = "   ,something,   greyscale 2 3  ,   Bright +50,   Greyscale,Scale 2,    , Contrast,,,  ,"
 
-complextring = "Gamma 124"
+complextring = "Gamma 124, Scale 100"
 workflowInterface(complextring)
 
 //			Then we just can initialise a pipeline with the result of this function.

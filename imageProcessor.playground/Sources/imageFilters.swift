@@ -230,7 +230,14 @@ public func solarisation (source: UIImage, degree: Int8) -> UIImage{
 
 // Scale an image
 public func scale (source: UIImage, degree: Int8) -> UIImage{
-	let newSize = CGSize(width: source.size.width  * CGFloat(degree), height: source.size.height * CGFloat(degree))
+	var scale : CGFloat
+	if degree < 0 {
+		scale = -16/CGFloat(degree)
+	} else{
+		scale = CGFloat(degree)/16
+	}
+	
+	let newSize = CGSize(width: source.size.width  * scale, height: source.size.height * scale)
 	let newRect = CGRectIntegral(CGRectMake(0,0, newSize.width, newSize.height))
 	UIGraphicsBeginImageContextWithOptions(newSize, false, 0)
 	let context = UIGraphicsGetCurrentContext()

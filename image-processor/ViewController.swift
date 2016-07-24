@@ -24,9 +24,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	@IBOutlet weak var filterSlider: UISlider!
 	@IBOutlet weak var sliderValue: UILabel!
 	
+	@IBOutlet weak var brightButtonLabel: UIButton!
+	@IBOutlet weak var contrastButtonLabel: UIButton!
+	@IBOutlet weak var greyscaleButtonLabel: UIButton!
+	@IBOutlet weak var inversionButtonLabel: UIButton!
+	@IBOutlet weak var solarisationButtonLabel: UIButton!
+	@IBOutlet weak var gammaButtonLabel: UIButton!
+	@IBOutlet weak var redButtonLabel: UIButton!
+	@IBOutlet weak var greenButtonLabel: UIButton!
+	@IBOutlet weak var blueButtonLabel: UIButton!
+	@IBOutlet weak var alphaButtonLabel: UIButton!
+	@IBOutlet weak var scaleButtonLabel: UIButton!
+	
 	var currentFilter = "Identity"
 	var currentParameter = "1"
-
+	
+	@IBOutlet weak var activityView: UIActivityIndicatorView!
 	
 	func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
 		dismissViewControllerAnimated(true, completion: nil)
@@ -89,7 +102,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	}
 	
 	func showSecondMenu(){
-		view.addSubview(SecondMenu)
+		self.view.addSubview(SecondMenu)
 		
 		let bottomConstraint = SecondMenu.bottomAnchor.constraintEqualToAnchor(firstMenu.topAnchor)
 		let leftConstraint = SecondMenu.leftAnchor.constraintEqualToAnchor(view.leftAnchor)
@@ -123,6 +136,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		self.view.addSubview(activityView)
+		self.view.bringSubviewToFront(activityView)
+		self.activityView.hidden = false
+		
 		// Do any additional setup after loading the view, typically from a nib.
 		onNewLabel.setImage(UIImage(named:"NewPhoto"), forState: UIControlState.Normal)
 		onShareLabel.setImage(UIImage(named:"Share"), forState: UIControlState.Normal)
@@ -130,6 +147,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		filterButtonLabel.setImage(UIImage(named:"Filter"), forState: UIControlState.Selected)
 		compareButton.setImage(UIImage(named:"Compare"), forState: UIControlState.Normal)
 		compareButton.setImage(UIImage(named:"Compare"), forState: UIControlState.Normal)
+
+		brightButtonLabel.setImage(UIImage(named:"bright"), forState: UIControlState.Normal)
+		contrastButtonLabel.setImage(UIImage(named:"contrast"), forState: UIControlState.Normal)
+		gammaButtonLabel.setImage(UIImage(named:"gamma"), forState: UIControlState.Normal)
+		greyscaleButtonLabel.setImage(UIImage(named:"greyscale"), forState: UIControlState.Normal)
+		solarisationButtonLabel.setImage(UIImage(named:"solarisation"), forState: UIControlState.Normal)
+		inversionButtonLabel.setImage(UIImage(named:"inversion"), forState: UIControlState.Normal)
+		redButtonLabel.setImage(UIImage(named:"red"), forState: UIControlState.Normal)
+		greenButtonLabel.setImage(UIImage(named:"green"), forState: UIControlState.Normal)
+		blueButtonLabel.setImage(UIImage(named:"blue"), forState: UIControlState.Normal)
 		
 		SecondMenu.translatesAutoresizingMaskIntoConstraints = false
 		SecondMenu.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.25)
@@ -146,7 +173,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	@IBAction func filterSliderValue(sender: UISlider) {
 		let value = Int8(round(sender.value / 1) * 1)
 		self.currentParameter = String(value)
-		self.sliderValue.text = self.currentParameter
+		self.sliderValue.text = self.currentFilter + ": " + self.currentParameter
 		filterIt()
 	}
 
@@ -171,6 +198,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		self.originalImageView.hidden = false
 		self.filteredImageView.hidden = true
 		self.filteredImageView.image = nil
+		self.activityView.hidden = true
 		
 		self.infoLabel.text = ""
 		self.infoLabel.hidden = true
@@ -192,72 +220,144 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	}
 	
 	@IBAction func compareButtonUp(sender: UIButton) {
+		self.infoLabel.text = "Current image"
 		UIView.animateWithDuration(1){
-			self.infoLabel.text = "Current image"
 			self.filteredImageView.alpha = 1
 		}
-		self.infoLabel.text = ""
-		self.infoLabel.hidden = true
 	}
 	
 	@IBAction func greyscaleButton(sender: UIButton) {
+		self.infoLabel.text = ""
+		self.filteredImageView.hidden = true
+		self.originalImageView.hidden = false
+		
+		filterSlider.enabled = false
+		self.sliderValue.text = "1"
+		self.filterSlider.setValue(1, animated: true)
 		self.currentFilter = "Greyscale"
 		filterIt()
 	}
 	
 	@IBAction func redButton(sender: UIButton) {
+		self.infoLabel.text = ""
+		self.filteredImageView.hidden = true
+		self.originalImageView.hidden = false
+		
+		self.sliderValue.text = "1"
+		self.filterSlider.setValue(1, animated: true)
 		self.currentFilter = "Red"
-		filterIt()
+		self.filterSlider.enabled = true
 	}
 	
 	@IBAction func greenButton(sender: UIButton) {
+		self.infoLabel.text = ""
+		self.filteredImageView.hidden = true
+		self.originalImageView.hidden = false
+		
+		self.sliderValue.text = "1"
+		self.filterSlider.setValue(1, animated: true)
 		self.currentFilter = "Green"
-		filterIt()
+		self.filterSlider.enabled = true
+		
 	}
 	
 	@IBAction func blueButton(sender: UIButton) {
+		self.infoLabel.text = ""
+		self.filteredImageView.hidden = true
+		self.originalImageView.hidden = false
+		
+		self.sliderValue.text = "1"
+		self.filterSlider.setValue(1, animated: true)
 		self.currentFilter = "Blue"
-		filterIt()
+		self.filterSlider.enabled = true
 	}
 	
 	@IBAction func alphaButton(sender: UIButton) {
+		self.infoLabel.text = ""
+		self.filteredImageView.hidden = true
+		self.originalImageView.hidden = false
+		
+		self.sliderValue.text = "1"
+		self.filterSlider.setValue(1, animated: true)
 		self.currentFilter = "Alpha"
-		filterIt()
+		self.filterSlider.enabled = true
 	}
 	
 	@IBAction func brightButton(sender: UIButton) {
+		self.infoLabel.text = ""
+		self.filteredImageView.hidden = true
+		self.originalImageView.hidden = false
+
+		self.sliderValue.text = "1"
+		self.filterSlider.setValue(1, animated: true)
 		self.currentFilter = "Bright"
-		filterIt()
+		self.filterSlider.enabled = true
 	}
 	
 	@IBAction func contrastButton(sender: UIButton) {
+		self.infoLabel.text = ""
+		self.filteredImageView.hidden = true
+		self.originalImageView.hidden = false
+		
+		self.sliderValue.text = "1"
+		self.filterSlider.setValue(1, animated: true)
 		self.currentFilter = "Contrast"
-		filterIt()
+		self.filterSlider.enabled = true
 	}
 	
 	@IBAction func gammaButton(sender: UIButton) {
+		self.infoLabel.text = ""
+		self.filteredImageView.hidden = true
+		self.originalImageView.hidden = false
+		
+		self.sliderValue.text = "1"
+		self.filterSlider.setValue(1, animated: true)
 		self.currentFilter = "Gamma"
-		filterIt()
+		self.filterSlider.enabled = true
 	}
 	
 	@IBAction func solarisationButton(sender: UIButton) {
+		self.infoLabel.text = ""
+		self.filteredImageView.hidden = true
+		self.originalImageView.hidden = false
+		
+		self.sliderValue.text = "1"
+		self.filterSlider.setValue(1, animated: true)
 		self.currentFilter = "Solarisation"
-		filterIt()
+		self.filterSlider.enabled = true
 	}
 	
 	@IBAction func inversionButton(sender: UIButton) {
+		self.infoLabel.text = ""
+		self.filteredImageView.hidden = true
+		self.originalImageView.hidden = false
+		
+		self.filterSlider.enabled = false
+		self.sliderValue.text = "1"
+		self.filterSlider.setValue(1, animated: true)
 		self.currentFilter = "Inversion"
 		filterIt()
 	}
 	
 	@IBAction func scaleButton(sender: UIButton) {
+		self.infoLabel.text = ""
+		self.filteredImageView.hidden = true
+		self.originalImageView.hidden = false
+		
+		self.sliderValue.text = "1"
+		self.filterSlider.setValue(1, animated: true)
 		self.currentFilter = "Scale"
-		filterIt()
+		self.filterSlider.enabled = true
 	}
 	
 	func filterIt() {
-		filterSlider.enabled = true
-		let myPipeline = Workflow(withSequence: workflowInterface(self.currentFilter + " " + self.currentParameter))
+		self.filteredImageView.alpha = 0
+		self.activityView.hidden = false
+		self.view.bringSubviewToFront(activityView)
+		self.activityView.startAnimating()
+		let filteringCommand = self.currentFilter + " " + self.currentParameter
+		
+		let myPipeline = Workflow(withSequence: workflowInterface(filteringCommand))
 		
 		if myPipeline != nil {
 			print("Could create the pipeline")
@@ -269,9 +369,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 			print("Could not create pipeline")
 		}
 		self.filteredImageView.image = myPipeline!.result!
+		self.compareButton.enabled = true
+		
+		self.activityView.stopAnimating()
+		self.activityView.hidden = true
+		
+		self.filteredImageView.hidden = false
+		self.filteredImageView.alpha = 0
+		UIView.animateWithDuration(0.5){
+			self.filteredImageView.alpha = 1
+		}
 		self.filteredImageView.hidden = false
 		self.originalImageView.hidden = true
-		self.compareButton.enabled = true
 	}
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
